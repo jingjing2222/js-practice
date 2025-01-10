@@ -17,7 +17,7 @@ export function class_0102() {
     // assignment12_02();
     // assignment13();
     // assignment14();
-    assignment15();
+    // assignment15();
     // assignment16();
     // assignment17();
     // assignment18();
@@ -29,7 +29,7 @@ export function class_0102() {
     // assignment23();
     // assignment24();
     // assignment25();
-    // assignment26();
+    assignment26();
 }
 
 function assignment01() {
@@ -41,7 +41,7 @@ function assignment01() {
     const object = {
         name: "Aaron",
         age: 10,
-    }; 
+    };
 
     object.name = "Baron";
 
@@ -1474,9 +1474,50 @@ function assignment25() {
     user.addFavorites("Book");
     user.addFavorites("Cook", "Sports");
     user.addFavorites("Drive", "Study", "Hiking");
-    console.log(user.favorites);
+    console.log(user.favorites.join(","));
 }
 
 function assignment26() {
-    console.log("뭘 하라는 거지?");
+    class Database {
+        constructor() {
+            this.data = [];
+        }
+
+        save({
+            name = "empty",
+            email = "empty",
+            age = "empty",
+            job = "No Job",
+            specialty = "Not Determined",
+        }) {
+            this.data.push({ name, email, age, job, specialty });
+        }
+    }
+    const users = new Database();
+    const json = [
+        {
+            name: "Aaron",
+            email: "aaron@gmail.com",
+            age: 10,
+            job: "Developer",
+            specialty: "Backend",
+        },
+        {
+            name: "Baron",
+            email: "baron@gmail.com",
+            age: 20,
+            job: "Designer",
+        },
+        {
+            name: "Caron",
+            email: "caron@gmail.com",
+            age: 30,
+        },
+        {
+            name: "Daron",
+            age: 40,
+        },
+    ];
+    json.map((each) => users.save(each));
+    console.log(users.data);
 }
