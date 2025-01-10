@@ -33,7 +33,15 @@ export function class_0102() {
     // assignment27();
     // assignment28();
     // assignment29();
-    assignment30();
+    // assignment30();
+    // assignment31();
+    // assignment32();
+    // assignment33();
+    // assignment34_01();
+    // assignment34_02();
+    // assignment35_01();
+    // assignment37();
+    tryFunction();
 }
 
 function assignment01() {
@@ -1701,4 +1709,110 @@ function assignment30() {
     });
 
     console.log(promise);
+}
+
+function assignment31() {
+    const promise = new Promise((resolve, reject) => {
+        reject({ success: false });
+    });
+
+    console.log(promise);
+}
+
+function assignment32() {
+    const promise = new Promise((resolve, reject) => {
+        resolve({ success: true });
+    });
+    promise.then((successData) => {
+        console.log(successData);
+    });
+}
+
+function assignment33() {
+    const promise = new Promise((resolve, reject) => {
+        reject({ success: false });
+    });
+    promise.catch((error) => {
+        throw new Error(error.success);
+    });
+}
+
+function assignment34_01() {
+    function main() {
+        const promise = new Promise((resolve, reject) => {
+            console.log("setTimeout 호출 직전");
+            setTimeout(() => {
+                console.log("setTimeout 호출 완료");
+                resolve({
+                    id: 1,
+                    name: "Aaron",
+                    email: "aaron@gmail.com",
+                    age: 10,
+                });
+            }, 1000);
+        });
+
+        promise.then((result) => console.log(result));
+    }
+
+    main();
+}
+
+function assignment34_02() {
+    function main() {
+        const promise = new Promise((resolve, reject) => {
+            console.log("setTimeout 호출 직전");
+            setTimeout(() => {
+                console.log("setTimeout 호출 완료");
+                reject({
+                    id: 1,
+                    name: "Aaron",
+                    email: "aaron@gmail.com",
+                    age: 10,
+                });
+            }, 1000);
+        });
+        promise.catch((result) => {
+            console.log(result);
+        });
+    }
+}
+function assignment37() {
+    async function main() {
+        const promise = new Promise((resolve, reject) => {
+            console.log("setTimeout 호출 직전");
+            setTimeout(() => {
+                console.log("setTimeout 호출 완료");
+                resolve({
+                    id: 1,
+                    name: "Aaron",
+                    email: "aaron@gmail.com",
+                    age: 10,
+                });
+            }, 1000);
+        });
+        const result = await promise;
+        console.log(result);
+    }
+
+    main();
+}
+
+async function tryFunction() {
+    const a = new Promise((resolve, reject) => {
+        resolve("good");
+    })
+        .then((response) => {
+            return response;
+        }) //결과값을 다시 promise로 포장해서 a에 넣는데 이게 다음 then에 넘어가는 것
+        .then((data) => {
+            console.log(data);
+            return data;
+        }) //then에 들어온 순간 Promise는 풀린거임
+        .catch((error) => {
+            console.log(error.message);
+        });
+
+    const b = await a;
+    console.log("last " + b);
 }
