@@ -32,7 +32,8 @@ export function class_0102() {
     // assignment26();
     // assignment27();
     // assignment28();
-    assignment29();
+    // assignment29();
+    assignment30();
 }
 
 function assignment01() {
@@ -1691,5 +1692,13 @@ function assignment29() {
         resolve("good");
         // reject("no");
     });
+    console.log(promise);
+}
+
+function assignment30() {
+    const promise = new Promise((resolve, reject) => {
+        resolve({ success: true });
+    });
+
     console.log(promise);
 }
